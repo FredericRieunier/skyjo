@@ -8,7 +8,7 @@ body{
     border: white solid 1px;
     height: 130px;
     width: 85px;
-    color: gray;
+    color: black;
     border-radius: 10px;
     text-align: center;
     font-size: 3rem;
@@ -19,23 +19,27 @@ body{
     text-shadow: white 0 0 1.5rem;
 }
 
-.card:hover, #stack:hover{
+.card:hover, #stack:hover, #stack-picked{
     cursor: pointer;
 }
 
 /* Colors of the numbers */
 .red{
-    background-color: red;
+    background-color: red !important;
 }
 .yellow{
-    background-color: yellow;
+    background-color: yellow !important;
 }
 .green{
-    background-color: green;
+    background-color: green !important;
 }
 .blue{
-    background-color: skyblue;
+    background-color: skyblue !important;
 }
 .purple{
-    background-color: blueviolet;
+    background-color: blueviolet !important;
+}
+
+.selected-card{
+    border: thick red solid !important;
 }

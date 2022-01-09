@@ -82,3 +82,60 @@ function pickRandomNumber(clickedArea){
 }
 
 // Stack management
+var stackArea = document.getElementById("stack");
+var stackGlobalArea = stackArea.parentNode;
+var stackPicked = document.createElement('div');
+stackPicked.id = "stack-picked";
+stackPicked.innerText = "Pi";
+stackArea.after(stackPicked);
+
+
+// Create stack card revealed area
+var stackCardRevealed = document.getElementById("stack-picked");
+
+function pickCardInStack(){
+    stackArea.addEventListener("click", function(){
+            let pickedNumber = getRandomIntInclusive(-2, 12);
+            stackCardRevealed.classList.remove("red", "yellow", "green", "blue", "purple");
+            if(pickedNumber>8){
+                stackCardRevealed.classList.add("red");
+            }
+            else if(pickedNumber>4){
+                stackCardRevealed.classList.add("yellow");
+            }
+            else if(pickedNumber > 0){
+                stackCardRevealed.classList.add("green");
+            }
+            else if(pickedNumber == 0){
+                stackCardRevealed.classList.add("blue");
+            }
+            else{
+                stackCardRevealed.classList.add("purple");
+            }
+            return stackCardRevealed.innerHTML = pickedNumber;
+    })
+}
+
+pickCardInStack();
+
+// When clicking on stack revealed card (then white border on this card) and on a set card, replace that set card value by the stack revealed card
+// And put to the discard the value of the selected set card
+var valueSelected;
+stackCardRevealed.addEventListener("click", function(){
+    valueSelected = parseInt(stackCardRevealed.innerText);
+    stackCardRevealed.classList.add("selected-card");
+    console.log(typeof valueSelected);
+});
+
+function replaceSetCardValue(clickedArea, value){
+    console.log(value);
+    console.log(clickedArea);
+    clickedArea.addEventListener("click", function(){
+        // if(typeof value == "number"){
+            console.log(value);
+            console.log(document.getElementsByClassName("card")[0]);
+            return clickedArea.innerText == value;
+        // }
+    });
+}
+replaceSetCardValue(document.getElementsByClassName("card")[0], 7);
