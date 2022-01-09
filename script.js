@@ -56,9 +56,29 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
+// document.getElementsByClassName("card")[0].classList.add("red")
 function pickRandomNumber(clickedArea){
     clickedArea.addEventListener("click", function(){
-        console.log(getRandomIntInclusive(-2, 12));
-        return clickedArea.innerHTML = getRandomIntInclusive(-2, 12);
+        if(clickedArea.innerText == "X"){
+            let pickedNumber = getRandomIntInclusive(-2, 12);
+            if(pickedNumber>8){
+                clickedArea.classList.add("red");
+            }
+            else if(pickedNumber>4){
+                clickedArea.classList.add("yellow");
+            }
+            else if(pickedNumber > 0){
+                clickedArea.classList.add("green");
+            }
+            else if(pickedNumber == 0){
+                clickedArea.classList.add("blue");
+            }
+            else{
+                clickedArea.classList.add("purple");
+            }
+            return clickedArea.innerHTML = pickedNumber;
+        }
     })
 }
+
+// Stack management

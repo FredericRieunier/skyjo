@@ -4,19 +4,38 @@ body{
     padding: 0;
 }
 
-.card{
+.card, #stack, #stack-picked, #discard{
     border: white solid 1px;
-    height: 150px;
-    width: 100px;
-    color: white;
+    height: 130px;
+    width: 85px;
+    color: gray;
     border-radius: 10px;
     text-align: center;
     font-size: 3rem;
     background-color: black;
     margin: 10px;
-    padding-top: 2rem;
+    padding-top: 1.5rem;
+
+    text-shadow: white 0 0 1.5rem;
 }
 
-.card:hover{
+.card:hover, #stack:hover{
     cursor: pointer;
+}
+
+/* Colors of the numbers */
+.red{
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: skyblue;
+}
+.purple{
+    background-color: blueviolet;
 }
