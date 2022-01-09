@@ -29,15 +29,36 @@ for (let i=1; i<13; i++){
 container1.innerHTML = cardsHTML;
 
 var card = document.getElementsByClassName("card");
-card = document.getElementsByTagName("div");
-console.log(card);
+// card = document.getElementsByTagName("div");
 
-
+// Get card ID
 for(let i=0; i<card.length; i++){
-    card[i].addEventListener("click", function(){revealCard(i)});
+    let idCard = "";
+    idCard = i<9 ? "1-0"+(i+1):"1-"+(i+1);
+    let area = document.getElementById(idCard);
+    revealCardId(area, i+1);
+
+    if(typeof pickRandomNumber(area) != "undefined"){
+        pickRandomNumber(area);
+    }
 }
 
-function revealCard(cardNumber){
+function revealCardId(clickedArea, cardNumber){
+    clickedArea.addEventListener("click", function(){
+        return cardNumber;
+    })
+}
 
-    alert(cardNumber);
+// Random generator
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+function pickRandomNumber(clickedArea){
+    clickedArea.addEventListener("click", function(){
+        console.log(getRandomIntInclusive(-2, 12));
+        return clickedArea.innerHTML = getRandomIntInclusive(-2, 12);
+    })
 }
