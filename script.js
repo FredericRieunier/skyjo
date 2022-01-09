@@ -31,13 +31,14 @@ container1.innerHTML = cardsHTML;
 var card = document.getElementsByClassName("card");
 // card = document.getElementsByTagName("div");
 
-// Get card ID
 for(let i=0; i<card.length; i++){
+    // Get card ID
     let idCard = "";
     idCard = i<9 ? "1-0"+(i+1):"1-"+(i+1);
     let area = document.getElementById(idCard);
     revealCardId(area, i+1);
 
+    // Reveal a card
     if(typeof pickRandomNumber(area) != "undefined"){
         pickRandomNumber(area);
     }
@@ -121,21 +122,31 @@ pickCardInStack();
 // When clicking on stack revealed card (then white border on this card) and on a set card, replace that set card value by the stack revealed card
 // And put to the discard the value of the selected set card
 var valueSelected;
-stackCardRevealed.addEventListener("click", function(){
-    valueSelected = parseInt(stackCardRevealed.innerText);
-    stackCardRevealed.classList.add("selected-card");
-    console.log(typeof valueSelected);
-});
+function getStackCardValue(){
+    // console.log(stackCardRevealed.innerText);
+    if(stackCardRevealed != "undefined" && stackCardRevealed.innerText != "Pi"){
+        valueSelected = parseInt(stackCardRevealed.innerText);
+        stackCardRevealed.classList.add("selected-card");
+        // console.log(valueSelected);
+        return valueSelected;
 
-function replaceSetCardValue(clickedArea, value){
-    console.log(value);
+    }
+}
+// stackCardRevealed.addEventListener("click", getStackCardValue);
+
+// console.log(valueSelected);
+function replaceSetCardValue(clickedArea){
     console.log(clickedArea);
     clickedArea.addEventListener("click", function(){
+        var value = getStackCardValue();
+        console.log(value);
         // if(typeof value == "number"){
-            console.log(value);
-            console.log(document.getElementsByClassName("card")[0]);
+            // console.log(value);
+            // console.log(document.getElementsByClassName("card")[0]);
             return clickedArea.innerText == value;
         // }
     });
 }
-replaceSetCardValue(document.getElementsByClassName("card")[0], 7);
+replaceSetCardValue(document.getElementsByClassName("card")[0]);
+
+// document.getElementsByClassName("card")[0].innerText = 9;
