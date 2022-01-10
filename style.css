@@ -16,7 +16,7 @@ body{
     margin: 10px;
     padding-top: 1.5rem;
 
-    text-shadow: white 0 0 1.5rem;
+    /* text-shadow: white 0 0 1.5rem; */
 }
 
 .card:hover, #stack:hover, #stack-picked{
@@ -25,19 +25,24 @@ body{
 
 /* Colors of the numbers */
 .red{
-    background-color: red !important;
+    /* background-color: red !important; */
+    background: radial-gradient(#E3D1D8 10px, #E32C24);
 }
 .yellow{
-    background-color: yellow !important;
+    /* background-color: yellow !important; */
+    background: radial-gradient(#F0EEE9 10px, #FDF026);
 }
 .green{
-    background-color: green !important;
+    /* background-color: green !important; */
+    background: radial-gradient(#E8ECE3 10px, #67B23B);
 }
 .blue{
-    background-color: skyblue !important;
+    /* background-color: skyblue !important; */
+    background: radial-gradient(#D8DADF 10px,#3DBFE9);
 }
 .purple{
-    background-color: blueviolet !important;
+    /* background-color: #393D8F !important; */
+    background: radial-gradient(#ECF1F8 10px, #393D8F) !important;
 }
 
 .selected-card{
