@@ -17,7 +17,7 @@ for (let i=1; i<13; i++){
         cardsHTML += "-" + i;
     }
     
-    cardsHTML += "' class='card'>X</div>"
+    cardsHTML += "' class='card'></div>"
 
     // Close row
     if(i%4 == 0){
@@ -60,7 +60,7 @@ function getRandomIntInclusive(min, max) {
 // document.getElementsByClassName("card")[0].classList.add("red")
 function pickRandomNumber(clickedArea){
     clickedArea.addEventListener("click", function(){
-        if(clickedArea.innerText == "X"){
+        if(clickedArea.innerText == ""){
             let pickedNumber = getRandomIntInclusive(-2, 12);
             if(pickedNumber>8){
                 clickedArea.classList.add("red");
@@ -97,27 +97,31 @@ var stackCardRevealed = document.getElementById("stack-picked");
 function pickCardInStack(){
     stackArea.addEventListener("click", function(){
             let pickedNumber = getRandomIntInclusive(-2, 12);
-            stackCardRevealed.classList.remove("red", "yellow", "green", "blue", "purple");
-            if(pickedNumber>8){
-                stackCardRevealed.classList.add("red");
-            }
-            else if(pickedNumber>4){
-                stackCardRevealed.classList.add("yellow");
-            }
-            else if(pickedNumber > 0){
-                stackCardRevealed.classList.add("green");
-            }
-            else if(pickedNumber == 0){
-                stackCardRevealed.classList.add("blue");
-            }
-            else{
-                stackCardRevealed.classList.add("purple");
-            }
+            addColor(stackCardRevealed, pickedNumber);
             return stackCardRevealed.innerHTML = pickedNumber;
     })
 }
 
 pickCardInStack();
+
+function addColor(area, pickedNumber){
+            area.classList.remove("red", "yellow", "green", "blue", "purple");
+            if(pickedNumber>8){
+                area.classList.add("red");
+            }
+            else if(pickedNumber>4){
+                area.classList.add("yellow");
+            }
+            else if(pickedNumber > 0){
+                area.classList.add("green");
+            }
+            else if(pickedNumber < 0){
+                area.classList.add("purple");
+            }
+            else if(pickedNumber != ""){
+                area.classList.add("blue");
+            }
+}
 
 // When clicking on stack revealed card (then white border on this card) and on a set card, replace that set card value by the stack revealed card
 // And put to the discard the value of the selected set card
@@ -135,18 +139,43 @@ function getStackCardValue(){
 // stackCardRevealed.addEventListener("click", getStackCardValue);
 
 // console.log(valueSelected);
-function replaceSetCardValue(clickedArea){
+function chooseSetCard(clickedArea){
     console.log(clickedArea);
     clickedArea.addEventListener("click", function(){
         var value = getStackCardValue();
         console.log(value);
-        // if(typeof value == "number"){
-            // console.log(value);
-            // console.log(document.getElementsByClassName("card")[0]);
-            return clickedArea.innerText == value;
-        // }
+
+        for(let i=0; i<card.length; i++){
+
+            // Get card ID
+            let idCard = "";
+            idCard = i<9 ? "1-0"+(i+1):"1-"+(i+1);
+            let area = document.getElementById(idCard);
+            replaceSetCardValue(area, value);
+        }
     });
 }
-replaceSetCardValue(document.getElementsByClassName("card")[0]);
+
+function replaceSetCardValue(cardToReplace, cardReplacing){
+    cardToReplace.addEventListener("click", function(){
+        console.log("cardreplacing:" + cardReplacing.innerText);
+        cardToReplace.innerText = cardReplacing;
+        console.log(cardReplacing.innerText);
+        addColor(cardToReplace, cardReplacing.innerText);
+        stackPicked.innerText = "";
+        addColor(stackPicked, "");
+    })
+}
+
+chooseSetCard(stackPicked);
+
+// chooseSetCard(document.getElementsByClassName("card")[0]);
 
 // document.getElementsByClassName("card")[0].innerText = 9;
+
+// Actions:
+// - Choisir un nb au hasard
+// - Remplacer la valeur d'une carte par un nb choisi au hasard
+// - Remplacer la valeur d'une carte par la valeur de celle du stack (si elle n'a pas encore été choisie)
+// - Remplacer la valeur d'une carte par la valeur de celle de la défausse (si elle n'a pas encore été choisie) et découvrir la précédente mise à la défausse
+// - 
