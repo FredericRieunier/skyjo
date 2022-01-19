@@ -40,6 +40,7 @@ for(let i=0; i<card.length; i++){
 
     // Reveal a card
     if(typeof pickRandomNumber(area) != "undefined"){
+        console.log(ok);
         pickRandomNumber(area);
     }
 }
@@ -61,22 +62,9 @@ function getRandomIntInclusive(min, max) {
 function pickRandomNumber(clickedArea){
     clickedArea.addEventListener("click", function(){
         if(clickedArea.innerText == ""){
+            console.log("cocorico");
             let pickedNumber = getRandomIntInclusive(-2, 12);
-            if(pickedNumber>8){
-                clickedArea.classList.add("red");
-            }
-            else if(pickedNumber>4){
-                clickedArea.classList.add("yellow");
-            }
-            else if(pickedNumber > 0){
-                clickedArea.classList.add("green");
-            }
-            else if(pickedNumber == 0){
-                clickedArea.classList.add("blue");
-            }
-            else{
-                clickedArea.classList.add("purple");
-            }
+            addColor(clickedArea, pickedNumber);
             return clickedArea.innerHTML = pickedNumber;
         }
     })
@@ -106,6 +94,7 @@ pickCardInStack();
 
 function addColor(area, pickedNumber){
             area.classList.remove("red", "yellow", "green", "blue", "purple");
+            console.log(pickedNumber);
             if(pickedNumber>8){
                 area.classList.add("red");
             }
@@ -179,3 +168,11 @@ chooseSetCard(stackPicked);
 // - Remplacer la valeur d'une carte par la valeur de celle du stack (si elle n'a pas encore été choisie)
 // - Remplacer la valeur d'une carte par la valeur de celle de la défausse (si elle n'a pas encore été choisie) et découvrir la précédente mise à la défausse
 // - 
+
+
+// Conditions
+// - Si clic sur set sans avoir sélectionné stack card : random
+// - Si clic sur stack non révélé : random
+// - Si clic sur set après avoir sélectionné stack card ou discard card : attribue valeur et couleur de stack card / discard card
+// Et dump valeur et couleur de stack card
+// Et affiche précédente carte de discard
