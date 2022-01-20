@@ -94,7 +94,7 @@ pickCardInStack();
 
 function addColor(area, pickedNumber){
             area.classList.remove("red", "yellow", "green", "blue", "purple");
-            console.log(pickedNumber);
+            // console.log(pickedNumber);
             if(pickedNumber>8){
                 area.classList.add("red");
             }
@@ -135,7 +135,7 @@ function chooseSetCard(clickedArea){
         console.log(value);
 
         for(let i=0; i<card.length; i++){
-
+            console.log(value);
             // Get card ID
             let idCard = "";
             idCard = i<9 ? "1-0"+(i+1):"1-"+(i+1);
@@ -147,9 +147,9 @@ function chooseSetCard(clickedArea){
 
 function replaceSetCardValue(cardToReplace, cardReplacing){
     cardToReplace.addEventListener("click", function(){
-        console.log("cardreplacing:" + cardReplacing.innerText);
+        // console.log("cardreplacing:" + cardReplacing.innerText);
         cardToReplace.innerText = cardReplacing;
-        console.log(cardReplacing.innerText);
+        // console.log(cardReplacing.innerText);
         addColor(cardToReplace, cardReplacing.innerText);
         stackPicked.innerText = "";
         addColor(stackPicked, "");
