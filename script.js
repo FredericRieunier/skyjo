@@ -93,23 +93,23 @@ function pickCardInStack(){
 pickCardInStack();
 
 function addColor(area, pickedNumber){
-            area.classList.remove("red", "yellow", "green", "blue", "purple");
-            // console.log(pickedNumber);
-            if(pickedNumber>8){
-                area.classList.add("red");
-            }
-            else if(pickedNumber>4){
-                area.classList.add("yellow");
-            }
-            else if(pickedNumber > 0){
-                area.classList.add("green");
-            }
-            else if(pickedNumber < 0){
-                area.classList.add("purple");
-            }
-            else if(pickedNumber != ""){
-                area.classList.add("blue");
-            }
+            // area.classList.remove("red", "yellow", "green", "blue", "purple");
+            // // console.log(pickedNumber);
+            // if(pickedNumber>8){
+            //     area.classList.add("red");
+            // }
+            // else if(pickedNumber>4){
+            //     area.classList.add("yellow");
+            // }
+            // else if(pickedNumber > 0){
+            //     area.classList.add("green");
+            // }
+            // else if(pickedNumber === 0){
+            //     area.classList.add("blue");
+            // }
+            // else if(pickedNumber < 0){
+            //     area.classList.add("purple");
+            // }
 }
 
 // When clicking on stack revealed card (then white border on this card) and on a set card, replace that set card value by the stack revealed card
